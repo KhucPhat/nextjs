@@ -1,0 +1,8 @@
+node_modules
+.idea
+.next
+build
+.yarn
+.git
+docker
+.env.example

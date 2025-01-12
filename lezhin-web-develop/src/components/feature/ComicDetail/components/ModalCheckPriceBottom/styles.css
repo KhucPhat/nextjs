@@ -1,0 +1,9 @@
+.custom-height-sheet {
+    height: 180px;
+}
+
+@media screen and (max-width: 768px) {
+    .custom-height-sheet {
+        height: 242px;
+    }
+}

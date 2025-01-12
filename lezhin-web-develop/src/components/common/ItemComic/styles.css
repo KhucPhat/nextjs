@@ -1,0 +1,13 @@
+.item-comic-image-box {
+  border: 0.5px solid hsl(var(--very-light-black));
+}
+
+.item-comic-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 144%;
+}
+
+.custom-border {
+  filter: drop-shadow(0px 2px 0px hsla(var(--border-trial))); 
+}

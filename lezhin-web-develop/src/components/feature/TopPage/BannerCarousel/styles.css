@@ -1,0 +1,27 @@
+.carouse-content {
+    height: 503px;
+}
+
+.carouse-item {
+    max-width: 33.33% ;
+}
+
+@media screen and (max-width: 1028px) {
+    .carouse-item {
+        max-width: 50% ;
+    }
+
+    .carouse-content {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .carouse-item {
+        max-width: 100% ;
+    }
+
+    .carouse-content {
+        height: 447px;
+    }
+}

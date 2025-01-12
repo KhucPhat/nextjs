@@ -1,0 +1,18 @@
+.comic-list-container .spacer {
+  width: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.comic-list-container .spacer > div {
+  height: 96px;
+  width: 1px;
+  background-color: hsl(var(--very-light-black));
+}
+
+@media (max-width: 768px) {
+  .comic-list-container .spacer {
+    width: 3px;
+  }
+}

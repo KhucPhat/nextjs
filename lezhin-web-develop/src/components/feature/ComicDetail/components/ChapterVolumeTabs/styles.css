@@ -1,0 +1,10 @@
+.chapter-volume-tabs .tabs-list-common {
+  height: 39px;
+  justify-content: space-around;
+}
+
+.tab-trigger-common[data-state='active'] {
+  box-shadow: none;
+}
+
+

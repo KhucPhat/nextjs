@@ -1,0 +1,40 @@
+.container-tab-common {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 1px solid hsl(var(--very-light-black));
+  width: 100%;
+  background: white;
+}
+
+
+.tabs-list-common {
+  flex-shrink: 0;
+  display: flex;
+  background-color: transparent;
+  padding: 0px;
+  border-radius: 0px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabs-list-common::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-trigger-common {
+  background-color: white;
+  padding: 0 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  user-select: none;
+  border-radius: 0px;
+}
+
+.tab-trigger-common[data-state='active'] {
+  color: var(--primary);
+  border-bottom: 2px solid currentColor;
+}

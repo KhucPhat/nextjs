@@ -1,0 +1,50 @@
+image: docker:20.10
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:20.10-dind
+
+stages:
+  - test
+  - build
+  - deploy
+
+build_test:
+  stage: test
+  before_script:
+    - cp ${ENV_FILE} .env
+  script:
+    - echo "Building..."
+    - yarn
+    - yarn build
+
+build_and_push_to_ecr:
+  stage: build
+  dependencies:
+    - build_test
+  before_script:
+    - cp ${ENV_FILE} .env
+  script:
+    - echo "Building the Docker image..."
+    - docker build -t lezhin_web . -f docker/production/Dockerfile
+    - echo "Tagging the Docker image..."
+    - docker tag lezhin_web:latest $ECR_REPOSITORY:latest
+    - echo "Logging into Amazon ECR..."
+    - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPOSITORY
+    - echo "Pushing the image to Amazon ECR..."
+    - docker push $ECR_REPOSITORY:latest
+  only:
+    - develop
+
+update_ecs_service:
+  stage: deploy
+  dependencies:
+    - build_and_push_to_ecr
+  script:
+    - echo "Updating ECS service to use the new image..."
+    - aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_DEFAULT_REGION
+  only:
+    - develop
+
